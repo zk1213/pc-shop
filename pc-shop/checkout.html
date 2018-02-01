@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>下订单页面</title>
+		<link rel="stylesheet" href="css/checkout.css" />
+	</head>
+	<body>
+			<header>
+				<a href="index.html"><img src="img/logo18546.png" alt=""></a> 
+				<span><a href="http://help.vancl.com/">帮助中心</a></span>
+			</header>
+			<div class="shop" id="Shop">
+				<div> <span> 1.我的购物车</span><span> 2.填写核对信息单</span><span>3.成功提交订单</span> </div>
+				<div class="address">
+					<div>收获地址：</div>
+					<ul class="addess-ul"></ul>
+					<span class="newAddress">+添加新地址：</span>
+					
+				</div>
+				<div class="add" id="add">
+					<span class="close">X</span>
+					<form action="">
+						<p>
+							收货人姓名：
+							<input type="text" name="address_name" placeholder="请输入收货人姓名"/>
+						</p>
+						<p>
+							手机：
+							<input type="text" name="mobile" placeholder="请输入收货人手机号码"/>
+						</p>
+						<p>
+							省：
+							<input type="text" name="province" placeholder="请输入收货人所在省"/>
+						</p>
+						<p>
+							市：
+							<input type="text" name="city" placeholder="请输入收货人所在市"/>
+						</p>
+						<p>
+							区：
+							<input type="text" name="district" placeholder="请输入收货人所在区"/>
+						</p>
+						<p>
+							地址：
+							<input type="text" name="address" placeholder="请输入收货人地址"/>
+						</p>
+						<input type="button" value="新建收货信息" id="btn" style="margin-top:20px;margin-left: 20px;"/>
+					</form>
+				</div>
+			</div>
+			<div>
+				<!-- <p>商品清单</p>  -->
+				<a href="cart.html">回到购物车>></a>
+			</div>
+			<div></div>
+			<!-- <div>
+				<span>已支付￥元，还需支付￥元</span>
+			</div>
+			<div>
+				<div>祝您下单愉快，普通商品从签收之日起7日内，可享受7天无理由退换货。</div>
+				<button>提交订单</button>
+			</div> -->
+			<footer>
+					<p>Copyright 2007 - 2016 vancl.com All Rights Reserved 京ICP证100557号 京公网安备11011502002400号 出版物经营许可证新出发京批字第直110138号</p>
+					<p>凡客诚品（北京）科技有限公司</p>
+					<span>
+						<a href="#"></a>
+						<a href="#"></a>
+						<a href="#"></a>
+						<a href="#"></a>
+						<a href="#"></a>
+						<a href="#"></a>
+					</span>
+			</footer>
+		<script src="js/jquery-1.12.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+		address_id = 0;
+		function addreddAjax(){
+			$.ajax({
+				"url": "http://h6.duchengjiu.top/shop/api_useraddress.php?token="+localStorage.token,
+				"type": "GET",
+				"dataType": "json",
+				"success": function(response){
+					console.log(response);
+					
+					var html = '';
+					for(var i=0;i<response.data.length;i++){
+						var obj = response.data[i];
+						
+						html += '<li class="address-item" data-id="' + obj.address_id +'">收货人：'
+								+ obj.address_name+"<br>"
+								+ '省份：' + obj.province+"<br>"
+								+ '市：'   + obj.city+"<br>"
+								+ '地区：' + obj.district+"<br>"
+								+ '街道：' + obj.address+"<br>"
+								+ '手机号' + obj.mobile+"<br>"
+								+ '<span class="remove">删除</span></li>'; 
+						
+					}
+					console.log(html)
+					$(".addess-ul").append(html);
+					console.log($(".addess-ul"))
+					$(".address-item").click(function(event){
+						$(this).addClass("active").siblings().removeClass("active");
+						
+						if(event.target){
+							address_id = event.target.getAttribute("data-id");
+							console.log(address_id);
+						}
+					})
+					$(".remove").click(function(){
+						console.log(this.parentNode);
+						var removeLi = this.parentNode;
+						removeLi.parentNode.removeChild(removeLi);
+						removeAjax(removeLi);
+					})
+					
+				}
+			})
+		}
+
+		addreddAjax();	
+		function removeAjax(obj){
+			console.log( $(obj).attr("data-id") );
+			
+			var address_id = $(obj).attr("data-id");
+			
+			$.ajax({
+				"url":"http://h6.duchengjiu.top/shop/api_useraddress.php?token=" +localStorage.token+ "&status=delete&address_id="+address_id,
+				"type":"get",
+				"dataType": "json",
+				"success": function(response){
+					console.log(response);
+				}
+			});	
+		}
+		$(".newAddress").click(function(){
+			$("#add").show();
+		})
+		$(".close").click(function(){
+			$("#add").hide();
+		})
+		$("#btn").click(function(){
+			var data = $("form").serialize();
+			console.log(data);
+			$.ajax({
+				"url":"http://h6.duchengjiu.top/shop/api_useraddress.php?token="+localStorage.token+"&status=add",
+				"type":"POST",
+				"dataType": "json",
+				"data": data,
+				"success": function(response){
+					console.log(response)
+					if(response.code === 0){
+						$("#add").hide();
+						addreddAjax();
+					}		
+				}
+			});
+		})
+		var sum = location.search.substr(5);		
+		$("#sum").html("<h3>当前订单总金额是：￥"+sum+"</h3>");
+		$("#order").click(function(){	
+			if(address_id === 0){
+				alert("请选择地址后在下订单");
+				return;
+			}
+			$.ajax({
+				"url":"http://h6.duchengjiu.top/shop/api_order.php?token="+localStorage.token+"&status=add",
+				"type":"POST",
+				"dataType": "json",
+				"data": {
+					"address_id": address_id, 
+					"total_prices": sum
+				},
+				"success": function(response){
+					console.log(response);
+					if(response.code === 0){
+						alert("下订单成功！");
+						location.href = "order.html";
+					}
+				}
+			});			
+		})
+		</script>
+	</body>
+</html>

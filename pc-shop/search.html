@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>中文搜索</title>
+		<link rel="stylesheet" type="text/css" href="css/ljz.css"/>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			a{text-decoration: none}
+			li{list-style: none}
+			img{border: none}
+			header{
+				width: 1200px;
+				height: 40px;
+				padding-top: 15px;
+				border-bottom: 1px solid black;
+				margin: 0 auto;
+			}
+			header img{
+				height: 30px;
+				float: left;
+				margin-left: 100px;
+			}
+			header span{
+				float: right;
+				font-size: 12px;	
+			}
+			aside{
+				font-weight: 500;
+				font-size: 20px;
+				line-height: 30px;
+				width: 150px;
+				height: 30px;
+				margin-left: 20px;
+			}
+			footer{
+				width: 1200px;
+				height: 124px;
+				padding-top:12px;
+				margin-bottom: 14px;
+				text-align: center;
+				font-size: 12px;
+				border-top: 1px solid black;
+				margin: 30px auto;
+			}
+			footer p{
+				line-height: 24px
+			}
+			footer span a:nth-child(1){
+				background: url("img/spritesbgtop.png") no-repeat scroll 0 -581px transparent;
+				display: inline-block;
+				height: 42px;
+				width: 113px;
+			}
+			footer span a:nth-child(2){
+				background: url("img/spritesbgtop.png") no-repeat scroll 0 -629px transparent;
+				display: inline-block;
+				height: 45px;
+				width: 156px;
+			}
+			footer span a:nth-child(3){
+				background: url("img/spritesbgtop.png") no-repeat scroll 0 -675px transparent;
+				display: inline-block;
+				height: 42px;
+				width: 96px;
+			}
+			footer span a:nth-child(4){
+				background: url("img/spritesbgtop.png") no-repeat scroll -97px -675px transparent;
+				display: inline-block;
+				height: 42px;
+				width: 101px;
+			}
+			footer span a:nth-child(5){
+				background: url("img/spritesbgtop.png") no-repeat scroll -202px -675px transparent;
+				display: inline-block;
+				height: 42px;
+				width: 42px;
+			}
+			footer span a:nth-child(6){
+				background: url("img/kexin_brand_for_others.png") no-repeat;
+				background-size: 98px;
+				display: inline-block;
+				height: 42px;
+				width: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<a href="index.html"><img src="img/logo18546.png" alt=""></a> 
+			<span><a href="http://help.vancl.com/">帮助中心</a></span>
+		</header>
+		<div class="main">
+		<aside>
+			搜索结果
+		</aside>
+			<ul class="goodsUl" id="goodsUl">
+				
+			</ul>
+		</div>
+		<footer>
+			<p>Copyright 2007 - 2016 vancl.com All Rights Reserved 京ICP证100557号 京公网安备11011502002400号 出版物经营许可证新出发京批字第直110138号</p>
+			<p>凡客诚品（北京）科技有限公司</p>
+			<span>
+				<a href="#"></a>
+				<a href="#"></a>
+				<a href="#"></a>
+				<a href="#"></a>
+				<a href="#"></a>
+				<a href="#"></a>
+			</span>
+		</footer>
+		<script src="js/jquery-1.12.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var str = location.search.substr(1);
+			var searchText = str.split("=");
+			var newText = decodeURI(searchText[1]);
+			$.ajax({
+				"url":"http://h6.duchengjiu.top/shop/api_goods.php",
+				"type": "GET",
+				"dataType": "json",
+				"data": {
+					"search_text": newText
+				},
+				"success": function(response){
+					console.log(response);
+					
+					for(var i=0;i<response.data.length;i++){
+					
+						$("#goodsUl").append('<li><img src="' +response.data[i].goods_thumb+ '" alt="" /><div><p><a href="detail.html?goods_id=' +response.data[i].goods_id+ '">' +response.data[i].goods_name+  '</a></p><p>' +response.data[i].goods_desc+  '</p><p class="oP">￥' +response.data[i].price+' &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="detail.html?goods_id=' +response.data[i].goods_id+' "><button class="addCart">点击查看详情</button></a></p></div></li>')
+					}
+				}
+				
+			});
+		</script>
+	</body>
+</html>

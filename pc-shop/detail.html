@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>商品详情页</title>
+		<style>
+		*{margin: 0;padding:0}
+		a{text-decoration: none}
+		li{list-style: none}
+		img{border: none}
+		header{
+			width: 1200px;
+			height: 40px;
+			padding-top: 15px;
+			border-bottom: 1px solid black;
+			margin: 0 auto;
+		}
+		header img{
+			height: 30px;
+			float: left;
+			margin-left: 100px;
+		}
+		header span{
+			float: right;
+			font-size: 12px;	
+		}
+		#box{
+			width: 1200px;
+			height:500px;
+			margin: 0 auto;
+			position: relative
+		}
+		#box img{
+			margin-top: 40px;
+			margin-left: 90px;
+			display: block;
+			float: left;
+		}
+		#box div{
+			width: 500PX;
+			margin-top: 40px;
+			margin-left: 90px;
+			float: left;
+		}
+		#box div p{
+			line-height: 30px;
+		}
+		#box div p:first-child{
+			font-size: 24px;
+			line-height: 34px;
+			margin-bottom: 20px;
+		}
+		#box button{
+			width:120px;
+			height: 60px;
+			position: absolute;
+			right: 60px;
+			bottom: 60px;
+		}
+		footer{
+			width: 1200px;
+			height: 124px;
+			padding-top:12px;
+			margin:0 auto 14px;
+			text-align: center;
+			font-size: 12px;
+			border-top: 1px solid black
+		}
+		footer p{
+			line-height: 24px
+		}
+		footer span a:nth-child(1){
+			background: url("img/spritesbgtop.png") no-repeat scroll 0 -581px transparent;
+			display: inline-block;
+			height: 42px;
+			width: 113px;
+		}
+		footer span a:nth-child(2){
+			background: url("img/spritesbgtop.png") no-repeat scroll 0 -629px transparent;
+			display: inline-block;
+			height: 45px;
+			width: 156px;
+		}
+		footer span a:nth-child(3){
+			background: url("img/spritesbgtop.png") no-repeat scroll 0 -675px transparent;
+			display: inline-block;
+			height: 42px;
+			width: 96px;
+		}
+		footer span a:nth-child(4){
+			background: url("img/spritesbgtop.png") no-repeat scroll -97px -675px transparent;
+			display: inline-block;
+			height: 42px;
+			width: 101px;
+		}
+		footer span a:nth-child(5){
+			background: url("img/spritesbgtop.png") no-repeat scroll -202px -675px transparent;
+			display: inline-block;
+			height: 42px;
+			width: 42px;
+		}
+		footer span a:nth-child(6){
+			background: url("img/kexin_brand_for_others.png") no-repeat;
+			background-size: 98px;
+			display: inline-block;
+			height: 42px;
+			width: 100px;
+		}
+		</style>
+	</head>
+	<body>
+		<!-- <p>
+			<input type="text" id="str" placeholder="商品id进行搜索"/>
+			<input type="button" value="搜索id" id="btn"/>
+		</p> -->
+		<header>
+			<a href="index.html"><img src="img/logo18546.png" alt=""></a> 
+		<span><a href="http://help.vancl.com/">帮助中心</a></span>
+		</header>
+		<div id="box">
+			<button id="crat">加入购物车</button>
+		</div>
+		<footer>
+			<p>Copyright 2007 - 2016 vancl.com All Rights Reserved 京ICP证100557号 京公网安备11011502002400号 出版物经营许可证新出发京批字第直110138号</p>
+			<p>凡客诚品（北京）科技有限公司</p>
+			<span>
+				<a href="#"></a>
+				<a href="#"></a>
+				<a href="#"></a>
+				<a href="#"></a>
+				<a href="#"></a>
+				<a href="#"></a>
+			</span>
+		</footer>
+		
+		<script src="js/jquery-1.12.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var str = location.search.substr(1);
+			var goodId = str.split("=");
+			console.log(goodId[1]);
+			$.ajax({
+				"url":"http://h6.duchengjiu.top/shop/api_goods.php",
+				"type": "GET",
+				"dataType": "json",
+				"data": {
+					"goods_id": goodId[1]
+				},
+				"success": function(response){
+					console.log(response);
+					$("#box").append('<img src="' +response.data[0].goods_thumb+ '" alt="" /><div><p>' +response.data[0].goods_name+  '</p><p>' +response.data[0].goods_desc+  '</p><p class="oP">￥' +response.data[0].price+'</p></div>')
+					
+				}
+				
+			});
+			
+			
+			// //通过商品id搜索商品内容
+			// $("#btn").click(function(){
+			// 	var strNew = $("#str").val();
+				
+			// 	console.log(strNew);
+				
+				
+			// 	$.ajax({
+			// 	"url":"http://h6.duchengjiu.top/shop/api_goods.php",
+			// 	"type": "GET",
+			// 	"dataType": "json",
+			// 	"data": {
+			// 		"goods_id":strNew
+			// 	},
+			// 	"success": function(response){
+			// 		console.log(response);
+					
+					
+			// 		$("#box").html('<li><img src="' +response.data[0].goods_thumb+ '" alt="" /><p><a href="#">' +response.data[0].goods_name+  '</a></p><p>' +response.data[0].goods_desc+  '</p><p class="oP">￥' +response.data[0].price+'</p></li>')
+					
+			// 	}
+				
+			// });
+			// })
+			$("#crat").click(function(){
+				if( !localStorage.getItem("token") ){
+					alert("请登录后才能使用加入购物车功能！");
+					
+					location.href = "login.html#callback=" +location.href;
+					return;
+				}
+				
+				console.log(goodId[1]);
+				var goods_number = localStorage.getItem("cart"+goodId[1]);
+				goods_number = goods_number ? parseInt(goods_number)+1 : 1;
+				$.ajax({
+					"url":"http://h6.duchengjiu.top/shop/api_cart.php?token="+ localStorage.token,
+					"type":"POST",
+					"dataType": "json",
+					"data": {
+						"goods_id": goodId[1],
+						"number": goods_number
+					},
+					"success": function(response){
+						console.log(response);
+						localStorage.setItem("cart"+goodId[1],goods_number);
+					}
+				});
+			})
+		</script>
+	</body>
+</html>

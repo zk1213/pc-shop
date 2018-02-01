@@ -1,0 +1,140 @@
+
+.shop{
+	overflow: hidden;
+    margin:0 auto 30px;
+    padding-bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap:wrap;
+}
+.shop li{
+	display: block;
+    width: 250px;
+    padding-top:20px;
+	height: 360px;
+	margin-top: 20px;
+	text-align: center;
+    border:1px solid #e0e0e1;
+    -webkit-transition:all 0.5s linear;
+    -moz-transition:all 0.5s linear;
+    transition:all 0.5s linear;
+}
+.shop li:hover{
+    box-shadow: 5px 5px 5px #999, -5px 5px 5px #999;
+}
+.shop li img{
+	width: 200px;
+}
+.shop li div{
+    width: 200px;
+    margin: 0 auto;
+}
+.shop li div p{
+    font-size: 14px
+}
+.price{
+	background: indianred;
+	font-size: 16px;
+	color: white;
+}
+.button{
+    /*position: absolute;*/
+    /*right: 90px;*/
+    /*bottom: -12px;*/
+    width: 1000px;
+    height: 30px;
+    margin: 0 auto;
+}
+#ButtonPrev{
+    color: black;
+    display: inline-block;
+    float: left;
+    width: 140px;
+    height: 30px;
+    border:1px solid gainsboro;
+    background-color: #dddddd;
+    text-align: center;
+    line-height: 30px;
+    cursor:pointer;
+}
+#ButtonNext{
+    color: black;
+    display: inline-block;
+    float: right;
+    width: 140px;
+    height: 30px;
+    border:1px solid gainsboro;
+    background-color: #dddddd;
+    text-align: center;
+    line-height: 30px;
+    cursor:pointer;
+}
+.button-center{
+    float: left;
+    overflow: hidden;
+    width:690px;
+    height: 30px;
+}
+#ButtonCenter{
+    float: left;
+    width: 4000px;
+    height:30px;
+    margin-left: 0;
+}
+#ButtonCenter span{
+    width: 30px;
+    height: 30px;
+    float: left;
+    border:1px solid #666666;
+    background-color: #dddddd;
+    text-align: center;
+    line-height: 30px;
+    margin-left: 20px;
+    cursor:pointer;
+}
+#ButtonCenter span.button-center-span{
+    background: firebrick;
+}
+.main{
+    width: 1200px;
+    margin: 0 auto;
+}
+.main .goodsUl{
+	overflow: hidden;
+	margin: 0 auto;
+	width: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap:wrap;
+}
+
+.main .goodsUl li{
+	float: left;
+	width: 230px;
+    height: 400px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-top:20px;
+    text-align: center;
+    font-size: 14px;
+    border:1px solid #e0e0e1;
+    -webkit-transition:all 0.5s linear;
+    -moz-transition:all 0.5s linear;
+    transition:all 0.5s linear;
+}
+.main .goodsUl li:hover{
+    box-shadow: 3px 3px 3px #999, -3px 3px 3px #999;
+}
+.main .goodsUl li img{
+	width: 200px;
+}
+.main .goodsUl li div{
+    width: 200px;
+    margin: 0 auto;
+}
+.oP{
+	color: red;
+	font-weight: bold;
+}

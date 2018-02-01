@@ -1,0 +1,471 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+a{text-decoration: none}
+li{list-style: none}
+img{border: none}
+.address {
+	width: 100%;
+	height: 220px;
+	margin-top:10px;
+	border: 1px solid #ccc
+}
+.address div{
+	width: 150px;
+	height: 220px;
+	background-color: #EEEEEE;
+	line-height: 220px;
+	text-align: center;
+	font-size: 14px;
+	font-weight: 700;
+	float: left;
+}
+.address>span{
+	float: left;
+	width: 240px;
+	height: 150px;
+	border: 1px dashed  #aaa;
+	margin:30px 0 0 30px;
+	line-height: 150px;
+	text-align: center;
+	display: block;
+	cursor: pointer;
+}
+.address span:hover{
+	border: 1px dashed #e31436;
+	
+}
+.address-item{
+    float: left;
+    width: 240px;
+    height: 150px;
+	border: 1px dashed  #aaa;
+	margin:30px 0 0 30px;
+	display: block;
+	cursor: pointer;
+}
+.address-item span{
+    background-color: red;
+    color: white;
+}
+.add {
+	width: 400px;
+	height: 300px;
+	background-color: white;
+	position: absolute;
+	left: 500px;
+	top: 100px;
+	display: none;
+	border: 5px solid #D2D2D2;
+}
+.add p{
+	margin-top: 20px;
+	font-size: 12px;
+	margin-left: 20px;
+}
+.add span {
+	background-color: #e31436;
+	color: white;
+	float: right;
+	display: block;
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	text-align: center;
+}
+
+.active {
+	background: deepskyblue;
+}
+
+#order {
+	width: 130px;
+	height: 60px;
+	border-radius: 15px;
+	background: orange;
+	font-size: 20px;
+}
+header{
+    width: 1090px;
+    height: 40px;
+    padding-top: 15px;
+    border-bottom: 1px solid black;
+    margin: 0 auto;
+}
+header img{
+    height: 30px;
+    float: left;
+    margin-left: 100px;
+}
+header span{
+	float: right;
+	font-size: 12px;	
+}
+a{color:black}
+a:hover{
+	color:#e31436
+}
+.operate {
+  width: 30px;
+  line-height: 30px;
+  background: #ccc;
+  cursor: pointer;
+  text-align: center;
+  padding: 5px 10px;
+}
+.shop{
+    width: 1090px;
+    /*background-color: #e31436;*/
+    margin: 0 auto;
+    font-size: 15px;
+}
+.shop>div:first-child{
+    background: url(../img/newProm.gif.png);
+    background-position: 0 -28px;
+    height: 28px;
+    width: 540px;
+    margin-top: 10px;
+    line-height: 28px;
+    font-size: 12px;
+    font-weight: 500;
+}
+.shop>div:first-child span:nth-child(1){
+    margin:0 50px;
+    display: block;
+    float: left;
+}
+.shop>div:first-child span:nth-child(2){
+	float: left;
+	color: white;
+    margin:0 50px;
+    display: block
+}
+.shop>div:first-child span:nth-child(3){
+    float: left;
+    margin:0 40px;
+    display: block
+}
+.shop .address-ul{
+    width: 600px;
+    height: 200px;
+    background-color: red;
+}
+.shop h1{
+    height: 30px;
+    font-size: 20px;
+    line-height: 30px;
+    margin: 10px 0;
+}
+.shop h5 span{
+    color: #e31436
+} 
+.shop h1 div{
+    height: 30px;
+    overflow: hidden;
+    padding-left: 45px;
+    width: 30px;
+    background: url(../img/newpromotion.gif.png) no-repeat;
+    background-position: -460px 0;
+    float: left;
+}
+.shop-list{
+    width: 100%;
+    height: 37px;
+    border: 1px solid #ddd;
+    margin-top: 10px;
+    background: url(../img/carthd.png)
+}
+.shop-list-check{
+    display: inline-block;
+    float: left;
+    width: 134px;
+    height: 100%;
+    font-weight: 500px;
+    color: black;
+    /*text-indent: 20px;*/
+}
+.shop-list-check input{
+    width: 17px;
+    height: 18px;
+    margin: 10px 7px 0 15px;
+    float:left;
+}
+.shop-list-check i{
+    float: left;
+    width: 30px;
+    height: 18px;
+    margin: 10px 0 0 0;
+    font-style: normal;
+}
+.shop-list-mas{
+    display: inline-block;
+    float: left;
+    width: 422px;
+    height: 100%;
+    line-height: 36px;
+    font-weight: 500px;
+    color: black;
+}
+.shop-list-one{
+    display: inline-block;
+    float: left;
+    width: 150px;
+    height: 100%;
+    line-height: 36px;
+    font-weight: 500px;
+    color: black;
+}
+.shop-list-s{
+    display: inline-block;
+    float: left;
+    width: 147px;
+    height: 100%;
+    line-height: 36px;
+    font-weight: 500px;
+    color: black;
+}
+.shop-list em{
+    float: left;
+    width: 128px;
+    height: 100%;
+    line-height: 36px;
+    font-weight: 500px;
+    color: black;
+}
+.shop-list span{
+    float: left;
+    width: 107px;
+    height: 100%;
+    line-height: 36px;
+    font-weight: 500px;
+    color: black;
+}
+#add{
+    width: 500px;
+    height: 350px;
+    /* position: relative; */
+}
+#add p{
+    margin-top: 0;   
+}
+#add>form>input{
+    position: absolute;
+    bottom:20px;
+    right:40px;
+}
+div:nth-child(3){
+    width: 1090px;
+    height: 50px;
+    background-color: #EFEFEF;
+    margin: 30px auto;
+    font-size: 15px;
+}
+div:nth-child(3) a{
+    color: #A10000;
+    font-size: 12px;
+    line-height: 50px;
+    float: right;
+    margin-right: 50px;
+}
+div:nth-child(3) p{
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 50px;
+    float: left;
+    margin-left: 50px;
+}
+div:nth-child(4){
+    width: 1090px;
+    background-color: #EFEFEF;
+    margin: 30px auto;
+    font-size: 15px;
+}
+div:nth-child(5){
+    width: 1090px;
+    height: 50px;
+    background-color: #EFEFEF;
+    margin: 30px auto;
+    font-size: 15px;
+}
+div:nth-child(5) span{
+    float: right;
+    font-size: 20px;
+    line-height: 50px;
+    color:#A10000
+}
+div:nth-child(6){
+    width: 1090px;
+    height: 40px;
+    margin: 30px auto;
+}
+div:nth-child(6) div{
+    width: 800px;
+    height: 40px;
+    border: 1px solid black;
+    float: left;
+    line-height: 40px;
+    text-align: center;
+    margin-left: 150px;
+    font-size: 14px;
+}
+div:nth-child(6) button{
+    width: 100px;
+    height: 40px;
+    background-color: #A10000;
+    color: white;
+    float: right;
+    line-height: 40px;
+    text-align: center;
+    margin-right: 30px;
+}
+.goods{
+    width: 1088px;
+    height: 121px;
+    border: 1px solid #ddd;
+    /*background-color: #fffbf0;*/
+    margin-top: 50px;
+}
+.goods-box{
+    float: left;
+    width: 525px;
+    height: 100%;
+}
+.goods-box img{
+    width: 80px;
+    height: 80px;
+    margin-top: 20px;
+    float: left;
+}
+.goods-box input{
+    width: 17px;
+    height: 18px;
+    margin: 50px 7px 0 15px;
+    float:left;
+}
+.goods-box p {
+    float: left;
+    margin-top: 25px;
+    margin-left: 17px;
+    color: #333;
+
+}
+.goods-one{
+    float: left;
+    width: 108px;
+    height: 80px;
+    text-align: center;
+    /*margin-left: 300px;*/
+    padding-top: 25px;
+    font-weight: bold;
+    padding-right: 20px;
+}
+.goods-lists{
+    float: left;
+    width: 120px;
+    height: 80px;
+    padding-left: 20px;
+    padding-top: 25px;
+    padding-right: 20px;
+}
+.left-button{
+    width: 22px;
+    height: 22px;
+    font-size: 20px;
+    text-align: center;
+    line-height: 22px;
+    border: 1px solid #dddddd;
+    cursor:pointer;
+    float: left;
+}
+.right-button{
+    float: left;
+    width: 22px;
+    height: 22px;
+    font-size: 20px;
+    text-align: center;
+    line-height: 22px;
+    border: 1px solid #dddddd;
+    cursor:pointer;
+}
+.center-text{
+    width: 43px;
+    height: 22px;
+    float: left;
+    border-right: none;
+    border-left: none;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+.goods-sum{
+    float: left;
+    width: 108px;
+    height: 80px;
+    text-align: center;
+    /*margin-left: 300px;*/
+    padding-top: 25px;
+    font-weight: bold;
+    padding-right: 20px;
+    padding-left: 10px;
+}
+.goods-op{
+    float: left;
+    width: 85px;
+    height: 80px;
+    padding: 25px 20px 0 31px;
+    cursor:pointer;
+}
+.goods-op:hover{
+    text-decoration:underline;
+}
+footer{
+    width: 1090px;
+    height: 124px;
+    padding-top:12px;
+    margin-bottom: 14px;
+    text-align: center;
+    font-size: 12px;
+    border-top: 1px solid black;
+    margin: 30px auto;
+}
+footer p{
+    line-height: 24px
+}
+footer span a:nth-child(1){
+    background: url("../img/spritesbgtop.png") no-repeat scroll 0 -581px transparent;
+    display: inline-block;
+    height: 42px;
+    width: 113px;
+}
+footer span a:nth-child(2){
+    background: url("../img/spritesbgtop.png") no-repeat scroll 0 -629px transparent;
+    display: inline-block;
+    height: 45px;
+    width: 156px;
+}
+footer span a:nth-child(3){
+    background: url("../img/spritesbgtop.png") no-repeat scroll 0 -675px transparent;
+    display: inline-block;
+    height: 42px;
+    width: 96px;
+}
+footer span a:nth-child(4){
+    background: url("../img/spritesbgtop.png") no-repeat scroll -97px -675px transparent;
+    display: inline-block;
+    height: 42px;
+    width: 101px;
+}
+footer span a:nth-child(5){
+    background: url("../img/spritesbgtop.png") no-repeat scroll -202px -675px transparent;
+    display: inline-block;
+    height: 42px;
+    width: 42px;
+}
+footer span a:nth-child(6){
+    background: url("../img/kexin_brand_for_others.png") no-repeat;
+    background-size: 98px;
+    display: inline-block;
+    height: 42px;
+    width: 100px;
+}
